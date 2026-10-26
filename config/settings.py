@@ -61,12 +61,14 @@ INSTALLED_APPS = [
     "planning.apps.PlanningConfig",
     "food_rescue.apps.FoodRescueConfig",
     "community.apps.CommunityConfig",
+    "voice_assistant.apps.VoiceAssistantConfig",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -122,7 +124,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # --- Internationalisation -------------------------------------------------------
-LANGUAGE_CODE = "fr-fr"
+LANGUAGE_CODE = "fr"
+LANGUAGES = [
+    ("fr", "Français"),
+    ("en", "English"),
+    ("ar", "العربية"),
+]
+LOCALE_PATHS = [BASE_DIR / "locale"]
 TIME_ZONE = "Africa/Tunis"
 USE_I18N = True
 USE_TZ = True
@@ -236,6 +244,8 @@ GEMINI_MODELES_SECOURS = [m.strip() for m in os.getenv(
     "GEMINI_MODELES_SECOURS", "gemini-2.5-flash,gemini-flash-lite-latest,gemini-2.5-flash-lite").split(",") if m.strip()]
 # Délai par modèle : 3 essais tiennent dans les 90 s d'attente de la page
 GEMINI_TIMEOUT_MODELE = int(os.getenv("GEMINI_TIMEOUT_MODELE", "25"))
+ASSISTANT_AUDIO_MAX_BYTES = int(os.getenv("ASSISTANT_AUDIO_MAX_BYTES", str(5 * 1024 * 1024)))
+ASSISTANT_RATE_LIMIT = int(os.getenv("ASSISTANT_RATE_LIMIT", "12"))
 
 # --- Traitement asynchrone (Celery + Redis) -------------------------------------------
 # USE_CELERY=True  -> la tâche IA est envoyée à un worker Celery (Redis).

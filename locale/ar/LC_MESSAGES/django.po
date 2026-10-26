@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-26 12:19+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+msgid "You don’t have permission to view or edit anything."
+msgstr "ليس لديك الإذن لعرض أو تعديل أي شيء."
+
+msgid "Aller au contenu principal"
+msgstr "انتقل إلى المحتوى الرئيسي"
+
+msgid "Langue"
+msgstr "اللغة"
+
+msgid "Langue de l’interface"
+msgstr "لغة الواجهة"
+
+msgid "Assistant vocal"
+msgstr "المساعد الصوتي"
+
+msgid "Communauté"
+msgstr "المجتمع"
+
+msgid "Repas"
+msgstr "الوجبات"
+
+msgid "Mes repas"
+msgstr "وجباتي"
+
+msgid "Historique et suivi"
+msgstr "السجل والمتابعة"
+
+msgid "Planificateur"
+msgstr "مخطط الوجبات"
+
+msgid "Menus de la semaine"
+msgstr "قائمة الأسبوع"
+
+msgid "Administration"
+msgstr "الإدارة"
+
+msgid "Demandes en attente"
+msgstr "الطلبات المعلقة"
+
+msgid "Connexion"
+msgstr "تسجيل الدخول"
+
+msgid "Créer un compte"
+msgstr "إنشاء حساب"
+
+msgid "Gemini + vos données"
+msgstr "Gemini + بياناتك"
+
+msgid "Assistant vocal EcoAssiette"
+msgstr "المساعد الصوتي EcoAssiette"
+
+msgid ""
+"Parlez en français, anglais, arabe ou tounsi. L’assistant répond à partir "
+"des données accessibles à votre compte."
+msgstr ""
+"تحدث بالفرنسية أو الإنجليزية أو العربية أو التونسي. يجيب المساعد اعتمادًا "
+"على البيانات المتاحة لحسابك."
+
+msgid "Nouvelle conversation"
+msgstr "محادثة جديدة"
+
+msgid "Conversation"
+msgstr "المحادثة"
+
+msgid "Comment puis-je vous aider ?"
+msgstr "كيف يمكنني مساعدتك؟"
+
+msgid ""
+"Exemples : « 9adech 3andi points ? », « Quels surplus sont disponibles ? », "
+"« What did I eat this week? »"
+msgstr ""
+"أمثلة: «9adech 3andi points؟»، «شنية المأكولات المتوفرة؟»، «ماذا أكلت هذا "
+"الأسبوع؟»"
+
+msgid "Combien de points ai-je ?"
+msgstr "كم لدي من النقاط؟"
+
+msgid "Quels surplus sont disponibles ?"
+msgstr "ما هي الفوائض المتاحة؟"
+
+msgid "Une erreur est survenue. Réessayez."
+msgstr "حدث خطأ. حاول مرة أخرى."
+
+msgid "Je vous écoute…"
+msgstr "أنا أستمع إليك…"
+
+msgid "Gemini réfléchit…"
+msgstr "Gemini يفكر…"
+
+msgid "Arrêter l’enregistrement"
+msgstr "إيقاف التسجيل"
+
+msgid "Parler à l’assistant"
+msgstr "تحدث مع المساعد"
+
+msgid "Votre question"
+msgstr "سؤالك"
+
+msgid "Écrivez ou utilisez le micro…"
+msgstr "اكتب أو استخدم الميكروفون…"
+
+msgid "Envoyer"
+msgstr "إرسال"
+
+msgid "Lire les réponses à voix haute"
+msgstr "قراءة الإجابات بصوت عالٍ"
+
+msgid ""
+"Lecture seule : aucune donnée n’est modifiée. L’audio est traité puis "
+"supprimé, il n’est pas enregistré dans la base."
+msgstr ""
+"وضع القراءة فقط: لا يتم تعديل أي بيانات. تتم معالجة الصوت ثم حذفه، ولا يتم "
+"تخزينه في قاعدة البيانات."

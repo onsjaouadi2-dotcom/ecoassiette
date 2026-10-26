@@ -1,5 +1,5 @@
-{% load static %}<!doctype html>
-<html lang="fr">
+{% load static i18n %}{% get_current_language as CURRENT_LANGUAGE %}<!doctype html>
+<html lang="{{ CURRENT_LANGUAGE }}" dir="{% if CURRENT_LANGUAGE == 'ar' %}rtl{% else %}ltr{% endif %}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,7 @@
   </script>
 </head>
 <body class="{% block body_class %}{% endblock %}">
-  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <a class="skip-link" href="#contenu">{% translate "Aller au contenu principal" %}</a>
 
   <header class="site-header">
     <div class="wrap header-inner">
@@ -33,6 +33,16 @@
         <span>Eco<b>Assiette</b></span>
       </a>
       <div class="header-outils">
+      <form class="language-switcher" action="{% url 'set_language' %}" method="post" data-sans-chargement>
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ request.get_full_path }}">
+        <label class="sr-only" for="langue-interface">{% translate "Langue" %}</label>
+        <select id="langue-interface" name="language" aria-label="{% translate 'Langue de l’interface' %}" onchange="this.form.submit()">
+          <option value="fr"{% if CURRENT_LANGUAGE == 'fr' %} selected{% endif %}>FR</option>
+          <option value="en"{% if CURRENT_LANGUAGE == 'en' %} selected{% endif %}>EN</option>
+          <option value="ar"{% if CURRENT_LANGUAGE == 'ar' %} selected{% endif %}>AR</option>
+        </select>
+      </form>
       <button class="theme-toggle" type="button" aria-pressed="false" title="Changer de thème">
         <span class="sr-only">Mode sombre</span>{% icon "sun" 20 "i-soleil" %}{% icon "moon" 20 "i-lune" %}
       </button>
@@ -43,18 +53,19 @@
       <nav id="menu-principal" class="main-nav" aria-label="Navigation principale">
         <ul>
           {% if user.is_authenticated %}
-            <li><a href="{% url 'community:fil' %}" {% if request.resolver_match.app_name == 'community' and request.resolver_match.url_name != 'notifications' %}aria-current="page"{% endif %}>{% icon "users" %}Communauté</a></li>
+            <li><a href="{% url 'voice_assistant:assistant' %}" {% if request.resolver_match.app_name == 'voice_assistant' %}aria-current="page"{% endif %}>{% icon "mic" %}{% translate "Assistant vocal" %}</a></li>
+            <li><a href="{% url 'community:fil' %}" {% if request.resolver_match.app_name == 'community' and request.resolver_match.url_name != 'notifications' %}aria-current="page"{% endif %}>{% icon "users" %}{% translate "Communauté" %}</a></li>
             <li><a href="{% url 'community:notifications' %}" {% if request.resolver_match.url_name == 'notifications' %}aria-current="page"{% endif %}>{% icon "bell" %}<span class="sr-only">Notifications</span>{% if nb_notifications_communaute %}<span class="pastille">{{ nb_notifications_communaute }}<span class="sr-only"> notification{{ nb_notifications_communaute|pluralize }} non lue{{ nb_notifications_communaute|pluralize }}</span></span>{% endif %}</a></li>
             {% if user.role == "CITOYEN" %}
             <li class="nav-group-li">
               <details class="nav-group">
                 <summary class="{% if request.resolver_match.app_name == 'repas' or request.resolver_match.app_name == 'planning' or request.resolver_match.url_name == 'assistant_recette' or request.resolver_match.url_name == 'reprendre_brouillon' %}is-active{% endif %}">
-                  {% icon "utensils" %}<span>Repas</span>{% icon "chevron-down" 15 %}
+                  {% icon "utensils" %}<span>{% translate "Repas" %}</span>{% icon "chevron-down" 15 %}
                 </summary>
                 <div class="nav-group-panel">
-                  <a href="{% url 'repas:liste' %}" {% if request.resolver_match.app_name == 'repas' %}aria-current="page"{% endif %}>{% icon "utensils" %}<span><strong>Mes repas</strong><small>Historique et suivi</small></span></a>
+                  <a href="{% url 'repas:liste' %}" {% if request.resolver_match.app_name == 'repas' %}aria-current="page"{% endif %}>{% icon "utensils" %}<span><strong>{% translate "Mes repas" %}</strong><small>{% translate "Historique et suivi" %}</small></span></a>
                   <a href="{% url 'impact:assistant_recette' %}" {% if request.resolver_match.url_name == 'assistant_recette' or request.resolver_match.url_name == 'reprendre_brouillon' %}aria-current="page"{% endif %}>{% icon "chef-hat" %}<span><strong>Assistant recette</strong><small>Analyse et alternatives</small></span></a>
-                  <a href="{% url 'planning:tableau' %}" {% if request.resolver_match.app_name == 'planning' %}aria-current="page"{% endif %}>{% icon "calendar" %}<span><strong>Planificateur</strong><small>Menus de la semaine</small></span></a>
+                  <a href="{% url 'planning:tableau' %}" {% if request.resolver_match.app_name == 'planning' %}aria-current="page"{% endif %}>{% icon "calendar" %}<span><strong>{% translate "Planificateur" %}</strong><small>{% translate "Menus de la semaine" %}</small></span></a>
                 </div>
               </details>
             </li>
@@ -77,7 +88,7 @@
               <li><a href="{% url 'users:nutri_profils' %}" {% if request.resolver_match.url_name == 'nutri_profils' or request.resolver_match.url_name == 'nutri_profil_detail' %}aria-current="page"{% endif %}>{% icon "users" %}Profils citoyens</a></li>
             {% endif %}
             {% if perms.users.gerer_utilisateurs %}
-              <li><a href="{% url 'users:admin_centre' %}" {% if request.resolver_match.url_name|slice:':6' == 'admin_' or request.resolver_match.url_name == 'administration' or request.resolver_match.url_name == 'intelligence_dashboard' %}aria-current="page"{% endif %}>{% icon "shield" %}Administration{% if nb_demandes_attente %} <span class="pastille" title="Demandes en attente">{{ nb_demandes_attente }}<span class="sr-only"> demande(s) en attente</span></span>{% endif %}</a></li>
+              <li><a href="{% url 'users:admin_centre' %}" {% if request.resolver_match.url_name|slice:':6' == 'admin_' or request.resolver_match.url_name == 'administration' or request.resolver_match.url_name == 'intelligence_dashboard' %}aria-current="page"{% endif %}>{% icon "shield" %}{% translate "Administration" %}{% if nb_demandes_attente %} <span class="pastille" title="{% translate 'Demandes en attente' %}">{{ nb_demandes_attente }}</span>{% endif %}</a></li>
             {% endif %}
             <li class="user-menu-li">
               <details class="user-menu">
@@ -102,8 +113,8 @@
               </details>
             </li>
           {% else %}
-            <li><a href="{% url 'users:login' %}" {% if request.resolver_match.url_name == 'login' %}aria-current="page"{% endif %}>{% icon "log-in" %}Connexion</a></li>
-            <li><a class="btn btn-small" href="{% url 'users:inscription' %}">Créer un compte</a></li>
+            <li><a href="{% url 'users:login' %}" {% if request.resolver_match.url_name == 'login' %}aria-current="page"{% endif %}>{% icon "log-in" %}{% translate "Connexion" %}</a></li>
+            <li><a class="btn btn-small" href="{% url 'users:inscription' %}">{% translate "Créer un compte" %}</a></li>
           {% endif %}
         </ul>
       </nav>

@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-26 12:19+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+msgid "You don’t have permission to view or edit anything."
+msgstr "You don’t have permission to view or edit anything."
+
+msgid "Aller au contenu principal"
+msgstr "Skip to main content"
+
+msgid "Langue"
+msgstr "Language"
+
+msgid "Langue de l’interface"
+msgstr "Interface language"
+
+msgid "Assistant vocal"
+msgstr "Voice assistant"
+
+msgid "Communauté"
+msgstr "Community"
+
+msgid "Repas"
+msgstr "Meals"
+
+msgid "Mes repas"
+msgstr "My meals"
+
+msgid "Historique et suivi"
+msgstr "History and tracking"
+
+msgid "Planificateur"
+msgstr "Meal planner"
+
+msgid "Menus de la semaine"
+msgstr "Weekly menus"
+
+msgid "Administration"
+msgstr "Administration"
+
+msgid "Demandes en attente"
+msgstr "Pending requests"
+
+msgid "Connexion"
+msgstr "Sign in"
+
+msgid "Créer un compte"
+msgstr "Create account"
+
+msgid "Gemini + vos données"
+msgstr "Gemini + your data"
+
+msgid "Assistant vocal EcoAssiette"
+msgstr "EcoAssiette voice assistant"
+
+msgid ""
+"Parlez en français, anglais, arabe ou tounsi. L’assistant répond à partir "
+"des données accessibles à votre compte."
+msgstr ""
+"Speak in French, English, Arabic or Tunisian. The assistant answers using "
+"the data available to your account."
+
+msgid "Nouvelle conversation"
+msgstr "New conversation"
+
+msgid "Conversation"
+msgstr "Conversation"
+
+msgid "Comment puis-je vous aider ?"
+msgstr "How can I help you?"
+
+msgid ""
+"Exemples : « 9adech 3andi points ? », « Quels surplus sont disponibles ? », "
+"« What did I eat this week? »"
+msgstr ""
+"Examples: “9adech 3andi points?”, “What surplus is available?”, “What did I "
+"eat this week?”"
+
+msgid "Combien de points ai-je ?"
+msgstr "How many points do I have?"
+
+msgid "Quels surplus sont disponibles ?"
+msgstr "What surplus is available?"
+
+msgid "Une erreur est survenue. Réessayez."
+msgstr "Something went wrong. Please try again."
+
+msgid "Je vous écoute…"
+msgstr "I’m listening…"
+
+msgid "Gemini réfléchit…"
+msgstr "Gemini is thinking…"
+
+msgid "Arrêter l’enregistrement"
+msgstr "Stop recording"
+
+msgid "Parler à l’assistant"
+msgstr "Talk to the assistant"
+
+msgid "Votre question"
+msgstr "Your question"
+
+msgid "Écrivez ou utilisez le micro…"
+msgstr "Type or use the microphone…"
+
+msgid "Envoyer"
+msgstr "Send"
+
+msgid "Lire les réponses à voix haute"
+msgstr "Read answers aloud"
+
+msgid ""
+"Lecture seule : aucune donnée n’est modifiée. L’audio est traité puis "
+"supprimé, il n’est pas enregistré dans la base."
+msgstr ""
+"Read-only: no data is changed. Audio is processed and then deleted; it is "
+"not stored in the database."

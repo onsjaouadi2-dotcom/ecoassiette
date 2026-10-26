@@ -1154,3 +1154,41 @@ html[data-theme="dark"] .btn-outline-light:hover { background: rgba(255,255,255,
 .community-ai-preview > div { display: flex; align-items: center; justify-content: space-between; gap: .5rem; max-width: 460px; }
 @media (max-width: 860px) { .community-layout { grid-template-columns: minmax(0, 680px); } .community-sidebar { display: none; } }
 @media (max-width: 560px) { .community-actions { grid-template-columns: repeat(2, 1fr); } .community-search { grid-template-columns: 1fr; } .community-profile { align-items: flex-start; } }
+
+/* ---------- Langues & assistant vocal ---------- */
+.language-switcher { margin: 0; }
+.language-switcher select { width: auto; min-height: 40px; padding: .45rem 1.8rem .45rem .55rem; border-radius: 10px; font-size: .78rem; font-weight: 800; }
+.voice-page { width: min(900px, 100%); margin-inline: auto; }
+.voice-head { align-items: end; }
+.voice-card { padding: clamp(1rem, 3vw, 2rem); min-height: 560px; display: flex; flex-direction: column; }
+.voice-welcome { margin: auto; padding: 2rem 1rem; text-align: center; max-width: 620px; }
+.voice-welcome[hidden] { display: none; }
+.voice-orb { width: 76px; height: 76px; margin: 0 auto 1rem; display: grid; place-items: center; border-radius: 50%; color: #fff; background: linear-gradient(135deg, var(--primary), #6c4ee3); box-shadow: 0 0 0 12px var(--primary-softer); }
+.voice-welcome h2 { margin-bottom: .5rem; }
+.voice-messages { display: grid; gap: .75rem; margin-bottom: 1rem; }
+.voice-message { max-width: min(78%, 650px); padding: .8rem 1rem; border-radius: 16px; }
+.voice-message p { margin: 0; white-space: pre-wrap; }
+.voice-message small { display: block; margin-top: .35rem; opacity: .7; }
+.voice-message-user { justify-self: end; color: #fff; background: var(--primary); border-end-end-radius: 4px; }
+.voice-message-assistant { justify-self: start; background: var(--surface-2); border: 1px solid var(--line); border-end-start-radius: 4px; }
+.voice-message-error { justify-self: center; color: var(--danger-dark); background: var(--danger-soft); }
+.voice-suggestions { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: auto; margin-bottom: .65rem; }
+.voice-suggestions:empty { display: none; }
+.voice-suggestions button { padding: .5rem .7rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text-2); cursor: pointer; }
+.voice-suggestions button:hover { border-color: var(--primary); color: var(--primary-dark); }
+.voice-compose { display: grid; grid-template-columns: 1fr auto auto; gap: .5rem; align-items: end; padding: .55rem; border: 1px solid var(--line-strong); border-radius: 16px; background: var(--surface); }
+.voice-compose textarea { min-height: 48px; max-height: 150px; resize: vertical; border: 0; box-shadow: none; background: transparent; }
+.voice-compose textarea:focus { outline: 0; }
+.voice-mic, .voice-send { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 12px; }
+.voice-mic { border: 0; color: var(--primary); background: var(--primary-softer); cursor: pointer; }
+.voice-mic.is-recording { color: #fff; background: var(--danger); animation: voice-pulse 1.2s infinite; }
+.voice-status { min-height: 1.4em; margin: .35rem .3rem 0; }
+.voice-speak { display: flex; align-items: center; gap: .4rem; margin-top: .35rem; }
+.voice-speak input { width: auto; }
+.voice-privacy { display: flex; gap: .4rem; align-items: center; margin: .8rem 0 0; }
+@keyframes voice-pulse { 50% { transform: scale(1.08); box-shadow: 0 0 0 8px var(--danger-soft); } }
+[dir="rtl"] .main-nav, [dir="rtl"] .voice-message { text-align: right; }
+[dir="rtl"] .voice-message-user { justify-self: start; border-end-end-radius: 16px; border-end-start-radius: 4px; }
+[dir="rtl"] .voice-message-assistant { justify-self: end; border-end-start-radius: 16px; border-end-end-radius: 4px; }
+@media (max-width: 640px) { .voice-message { max-width: 92%; } .voice-card { min-height: 500px; } .language-switcher select { min-height: 38px; } }
+@media (prefers-reduced-motion: reduce) { .voice-mic.is-recording { animation: none; } }

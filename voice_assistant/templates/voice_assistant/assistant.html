@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block title %}{% translate "Assistant vocal" %}{% endblock %}
+{% block content %}
+<div class="voice-page">
+  <div class="page-head voice-head">
+    <div>
+      <p class="eyebrow">{% icon "sparkles" 15 %}{% translate "Gemini + vos données" %}</p>
+      <h1>{% translate "Assistant vocal EcoAssiette" %}</h1>
+      <p class="muted">{% translate "Parlez en français, anglais, arabe ou tounsi. L’assistant répond à partir des données accessibles à votre compte." %}</p>
+    </div>
+    <form action="{% url 'voice_assistant:effacer' %}" method="post">
+      {% csrf_token %}<button class="btn btn-ghost btn-small" type="submit">{% translate "Nouvelle conversation" %}</button>
+    </form>
+  </div>
+
+  <section class="voice-card card" aria-labelledby="titre-conversation">
+    <h2 id="titre-conversation" class="sr-only">{% translate "Conversation" %}</h2>
+    <div class="voice-welcome" data-welcome>
+      <span class="voice-orb" aria-hidden="true">{% icon "mic" 30 %}</span>
+      <h2>{% translate "Comment puis-je vous aider ?" %}</h2>
+      <p>{% translate "Exemples : « 9adech 3andi points ? », « Quels surplus sont disponibles ? », « What did I eat this week? »" %}</p>
+    </div>
+    <div class="voice-messages" data-messages aria-live="polite"></div>
+
+    <div class="voice-suggestions" data-suggestions>
+      <button type="button">{% translate "Combien de points ai-je ?" %}</button>
+      <button type="button">{% translate "Quels surplus sont disponibles ?" %}</button>
+      <button type="button">9adech 3andi points?</button>
+    </div>
+
+    <form class="voice-compose" data-assistant-form action="{% url 'voice_assistant:message' %}" method="post"
+          data-error="{% translate 'Une erreur est survenue. Réessayez.' %}"
+          data-listening="{% translate 'Je vous écoute…' %}"
+          data-thinking="{% translate 'Gemini réfléchit…' %}"
+          data-stop="{% translate 'Arrêter l’enregistrement' %}"
+          data-mic="{% translate 'Parler à l’assistant' %}">
+      {% csrf_token %}
+      <label class="sr-only" for="assistant-question">{% translate "Votre question" %}</label>
+      <textarea id="assistant-question" name="question" rows="2" maxlength="1000"
+                placeholder="{% translate 'Écrivez ou utilisez le micro…' %}"></textarea>
+      <button class="voice-mic" type="button" data-mic aria-label="{% translate 'Parler à l’assistant' %}">{% icon "mic" 22 %}</button>
+      <button class="btn voice-send" type="submit" aria-label="{% translate 'Envoyer' %}">{% icon "send" 20 %}</button>
+    </form>
+    <div class="voice-status small muted" data-status role="status"></div>
+    <label class="voice-speak small"><input type="checkbox" data-auto-speak checked> {% translate "Lire les réponses à voix haute" %}</label>
+    <p class="small muted voice-privacy">{% icon "shield" 15 %}{% translate "Lecture seule : aucune donnée n’est modifiée. L’audio est traité puis supprimé, il n’est pas enregistré dans la base." %}</p>
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'voice_assistant/assistant.js' %}" defer></script>{% endblock %}

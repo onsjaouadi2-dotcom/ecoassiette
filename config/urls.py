@@ -22,6 +22,8 @@ urlpatterns = [
     path("planning/", include("planning.urls")),
     path("food-rescue/", include("food_rescue.urls")),
     path("communaute/", include("community.urls")),
+    path("assistant/", include("voice_assistant.urls")),
+    path("i18n/", include("django.conf.urls.i18n")),
 ]
 
 if settings.DEBUG:

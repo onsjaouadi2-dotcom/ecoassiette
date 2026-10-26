@@ -15,6 +15,8 @@ La plateforme accompagne ensuite l'utilisateur jusqu'à l'action avec des menus 
 ### Assistant de recette intelligent
 
 - Analyse d'une recette en texte libre avec Gemini.
+- Assistant vocal global relié en lecture seule aux repas, menus, points, Food Rescue et à la communauté.
+- Interface français/anglais/arabe avec rendu RTL, et compréhension du tounsi parlé ou écrit.
 - Extraction des ingrédients, catégories et quantités.
 - Repli local déterministe lorsque l'API est indisponible.
 - Correction manuelle avant validation.
@@ -209,6 +211,8 @@ DATABASE_URL=
 GEMINI_API_KEY=
 GEMINI_MODEL=gemini-flash-latest
 GEMINI_TIMEOUT=60
+ASSISTANT_RATE_LIMIT=12
+ASSISTANT_AUDIO_MAX_BYTES=5242880
 
 # Génération d'images locale et gratuite (aucune clé API).
 LOCAL_IMAGE_MODEL=stabilityai/sd-turbo
@@ -252,6 +256,29 @@ coverage report -m
 coverage html
 ```
 
+## Tester les langues et l'assistant vocal
+
+1. Renseignez `GEMINI_API_KEY` dans `.env`, puis lancez `python manage.py runserver`.
+2. Connectez-vous et ouvrez `/assistant/` ou cliquez sur **Assistant vocal**.
+3. Testez une question texte dans chaque langue : `Combien de points ai-je ?`,
+   `What surplus is available?`, puis `9adech 3andi points?` ou `شنوة فما متوفر؟`.
+4. Autorisez le micro et parlez pendant moins de 30 secondes. Le micro exige HTTPS en
+   production, mais fonctionne aussi sur `localhost`.
+5. Choisissez **AR** dans l'en-tête pour vérifier la traduction et l'affichage RTL.
+
+Sans clé Gemini, les questions texte courantes utilisent le moteur local. La transcription
+audio nécessite Gemini. L'assistant accède en lecture seule à un résumé filtré des repas,
+menus, points, dons, réservations et notifications du compte connecté. Les adresses privées,
+codes de collecte, e-mails et données appartenant aux autres comptes sont exclus.
+
+Tests ciblés :
+
+```bash
+python manage.py test voice_assistant
+python manage.py check
+python manage.py makemigrations --check --dry-run
+```
+
 ## Structure du projet
 
 ```text
@@ -263,6 +290,8 @@ ecoassiette/
 ├── planning/        # menus hebdomadaires et listes de courses
 ├── food_rescue/     # dons de surplus et collectes solidaires
 ├── community/       # fil social, mentions, likes, commentaires et partages
+├── voice_assistant/ # conversation texte/audio Gemini et contexte utilisateur filtré
+├── locale/          # catalogues anglais et arabe
 ├── templates/       # mise en page globale et composants partagés
 ├── static/          # CSS, JavaScript, polices et icônes
 ├── docs/images/     # captures utilisées par la documentation
